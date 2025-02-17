@@ -202,7 +202,6 @@ def generate_launch_description():
     spawn_entity = Node(package='ros_gz_sim', executable='create',
                         arguments=['-topic', 'robot_description',
                                    '-name', 'my_bot',
-                                #    '-y', '0.5', # To move out of the wall
                                    '-z', '0.1'],
                         output='screen')
 
