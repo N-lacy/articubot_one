@@ -43,7 +43,6 @@ def generate_launch_description():
             remappings=[('/cmd_vel_out','/diff_cont/cmd_vel_unstamped')]
         )
 
-    
 
 
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
@@ -61,9 +60,18 @@ def generate_launch_description():
 
     diff_drive_spawner = Node(
         package="controller_manager",
-        executable="spawner.py",
+        executable="spawner",
         arguments=["diff_cont"],
     )
+
+    # diff_drive_spawner = Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["diff_drive_controller", 
+    #                "--param-file", 
+    #                controller_params_file
+    #     ],
+    # )
 
     delayed_diff_drive_spawner = RegisterEventHandler(
         event_handler=OnProcessStart(
@@ -74,7 +82,7 @@ def generate_launch_description():
 
     joint_broad_spawner = Node(
         package="controller_manager",
-        executable="spawner.py",
+        executable="spawner",
         arguments=["joint_broad"],
     )
 

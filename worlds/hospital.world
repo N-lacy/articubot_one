@@ -122,25 +122,10 @@
     </model>
 
     <!-- Nurses Station -->
-    <model name="nurses_station">
-      <static>true</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <mesh>
-              <uri>/home/nakawung/gazebo_models/aws_robomaker_hospital_nursesstation_01/meshes/aws_robomaker_hospital_nursesstation_01_collision.dae</uri>
-            </mesh>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>/home/nakawung/gazebo_models/aws_robomaker_hospital_nursesstation_01/meshes/aws_robomaker_hospital_nursesstation_01_visual.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-      <pose>0 1.0 0 0 -0 0</pose>
-    </model>
+    <include>
+      <uri>
+        /home/nakawung/gazebo_models/aws_robomaker_hospital_nursesstation_01
+      </uri>
+    </include>
   </world>
 </sdf>
