@@ -48,6 +48,7 @@
                 </command_interface>
                 <state_interface name="position"/>
                 <state_interface name="velocity"/>
+                <state_interface name="temperature"/>
             </joint>
             <joint name="right_wheel_joint">
                 <command_interface name="velocity">
@@ -56,6 +57,17 @@
                 </command_interface>
                 <state_interface name="position"/>
                 <state_interface name="velocity"/>
+                <state_interface name="temperature"/>
+            </joint>
+            <joint name="robot_system">
+                <command_interface name="emergency_stop_cmd"/>
+                <command_interface name="digital_write"/>
+                <command_interface name="analog_write"/>
+                <state_interface name="ultrasonic_sensor_1"/>
+                <state_interface name="ultrasonic_sensor_2"/>
+                <state_interface name="emergency_stop_state"/>
+                <state_interface name="mode"/>
+                <state_interface name="battery_level"/>
             </joint>
         </ros2_control>
     </xacro:unless>

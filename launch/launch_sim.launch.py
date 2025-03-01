@@ -202,7 +202,7 @@ def generate_launch_description():
     spawn_entity = Node(package='ros_gz_sim', executable='create',
                         arguments=['-topic', 'robot_description',
                                    '-name', 'my_bot',
-                                   '-z', '0.1'],
+                                   '-z', '0.3'],
                         output='screen')
 
     diff_drive_spawner = Node(
@@ -229,6 +229,43 @@ def generate_launch_description():
         output='screen',
     )
 
+        # Node to bridge /cmd_vel and /odom
+    # ros_gz_bridge = Node(
+    #     package="ros_gz_bridge",
+    #     executable="parameter_bridge",
+    #     arguments=[
+    #         "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+    #         "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
+    #         "/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
+    #         "/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model",
+    #         #"/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
+    #         #"/camera/image@sensor_msgs/msg/Image@gz.msgs.Image",
+    #         "/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo",
+    #         "/imu@sensor_msgs/msg/Imu@gz.msgs.IMU",
+    #         "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
+    #         "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
+    #         "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",
+    #         "/camera/depth_image@sensor_msgs/msg/Image@gz.msgs.Image",
+    #         "/camera/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",
+    #     ],
+    #     output="screen",
+    #     parameters=[
+    #         {'use_sim_time': LaunchConfiguration('use_sim_time')},
+    #     ]
+    # )
+
+    # Relay node to republish /camera/camera_info to /camera/image/camera_info
+    relay_camera_info_node = Node(
+        package='topic_tools',
+        executable='relay',
+        name='relay_camera_info',
+        output='screen',
+        arguments=['camera/camera_info', 'camera/image/camera_info'],
+        parameters=[
+            {'use_sim_time': True},
+        ]
+    )
+
     ros_gz_image_bridge = Node(
         package="ros_gz_image",
         executable="image_bridge",
@@ -245,5 +282,6 @@ def generate_launch_description():
         diff_drive_spawner,
         joint_broad_spawner,
         ros_gz_bridge,
-        ros_gz_image_bridge
+        ros_gz_image_bridge,
+        relay_camera_info_node
     ])

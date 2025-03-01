@@ -4,12 +4,13 @@
     <joint name="face_joint" type="fixed">
         <parent link="chassis"/>
         <child link="face_link"/>
-        <origin xyz="${chassis_length} 0 ${chassis_height/2}" rpy="0 0 0"/>
+        <origin xyz="${chassis_length/2} 0 ${camera_offset_z}" rpy="0 0 0"/>
+        <!-- <origin xyz="${chassis_length/2} 0 ${chassis_height/2}" rpy="0 0 0"/> -->
     </joint>
 
     <link name="face_link">
         <visual>
-            <origin xyz="0 0.05 0.01" rpy="0 ${pi/2} 0"/>
+            <origin xyz="0 0.1 -0.09" rpy="0 ${pi/2} 0"/>
             <geometry>
                 <cylinder radius="0.01" length="0.002"/>
             </geometry>
@@ -17,7 +18,22 @@
         </visual>
 
         <visual>
-            <origin xyz="0 -0.05 0.01" rpy="0 ${pi/2} 0"/>
+            <origin xyz="0 -0.1 -0.09" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.01" length="0.002"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <visual>
+            <origin xyz="0 0.1 -0.068" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.01" length="0.002"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+
+        <visual>
+            <origin xyz="0 -0.1 -0.068" rpy="0 ${pi/2} 0"/>
             <geometry>
                 <cylinder radius="0.01" length="0.002"/>
             </geometry>
@@ -26,12 +42,83 @@
 
 
         <visual>
-            <origin xyz="-0.011 0 -0.00" rpy="0 ${1.5} 0"/>
+            <origin xyz="-0.011 0 -0.00" rpy="0 ${pi/2} 0"/>
             <geometry>
-                <cylinder radius="0.05" length="0.02"/>
+                <cylinder radius="0.02" length="0.03"/>
             </geometry>
             <material name="red"/>
         </visual>
+        <visual>
+            <origin xyz="-0.011 0.01 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 -0.01 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 0.02 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 -0.02 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 0.03 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 -0.03 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 0.04 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 -0.04 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 0.05 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+        <visual>
+            <origin xyz="-0.011 -0.05 -0.00" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.03"/>
+            </geometry>
+            <material name="red"/>
+        </visual>
+
     </link>
 
     <gazebo reference="face_link">
